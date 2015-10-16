@@ -9,7 +9,7 @@ var execSync = require('child_process').execSync
 // -- Local modules
 var check   = require('./dbcheck.js')
   , test    = require('./dbtest.js')
-  , geoTest = require('./geotest.js')
+  , geoTest = require('./geotests.js')
   ;
 
 // -- Local constants
