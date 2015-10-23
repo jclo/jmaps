@@ -1,5 +1,10 @@
 ### HEAD
 
+### 0.1.3 (October 23, 2015)
+
+  * Fixed mismatch in the version number.
+
+
 ### 0.1.2 (October 23, 2015)
 
   * Updated the email address,
