@@ -1,6 +1,6 @@
 {
   "name": "jmaps",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A light Javascript API for reading Natural Earth DB files",
   "main": "index.js",
   "scripts": {
@@ -15,10 +15,13 @@
   },
   "keywords": [
     "maps",
-    "naturalearth",
-    "shapefile"
+    "natural earth",
+    "shapefile",
+    "dbf",
+    "shp",
+    "geojson"
   ],
-  "author": "Jclo <jc006@wanadoo.fr>",
+  "author": "jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jclo/jmaps/issues"

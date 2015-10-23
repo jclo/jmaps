@@ -22,7 +22,7 @@ module.exports = function(path, db) {
       , test
       ;
 
-    it('Checks that no argument throws an error.', function() {
+    it('Expects the method to throw an error if the arguments are undefined.', function() {
       try {
         test = false;
         jmap.transform();
@@ -32,7 +32,7 @@ module.exports = function(path, db) {
       expect(test).to.be.true;
     });
 
-    it('Checks that an empty GeoJSON object throws an error.', function() {
+    it('Expects the method to throw an error if the first argument is an empty object.', function() {
       try {
         test = false;
         jmap.transform({});
@@ -44,7 +44,7 @@ module.exports = function(path, db) {
 
     geojson = jmap.getFeature(1);
 
-    it('Checks that a wrong option type throws an error.', function() {
+    it('Expects the method to throw an error if the second argument is not an object.', function() {
       try {
         test = false;
         jmap.transform(geojson, 'a');
@@ -54,7 +54,7 @@ module.exports = function(path, db) {
       expect(test).to.be.true;
     });
 
-    it('Checks that a wrong scale option type throws an error.', function() {
+    it('Expects the method to throw an error if option.scale is not a number.', function() {
       try {
         test = false;
         jmap.transform(geojson, { scale: 'a' });
@@ -64,7 +64,7 @@ module.exports = function(path, db) {
       expect(test).to.be.true;
     });
 
-    it('Checks that a scale lower that 1 throws an error.', function() {
+    it('Expects the method to throw an error if option.scale is a number lower than 1.', function() {
       try {
         test = false;
         jmap.transform(geojson, { scale: 0.99 });
@@ -74,7 +74,7 @@ module.exports = function(path, db) {
       expect(test).to.be.true;
     });
 
-    it('Checks that a wrong projection value throws an error.', function() {
+    it('Expects the method to throw an error if option.projection ha a wrong value.', function() {
       try {
         test = false;
         jmap.transform(geojson, { projection: 1 });
@@ -84,7 +84,7 @@ module.exports = function(path, db) {
       expect(test).to.be.true;
     });
 
-    it('Checks that a wrong mirror value throws an error.', function() {
+    it('Expects the method to throw an error if option.mirror has a wrong value.', function() {
       try {
         test = false;
         jmap.transform(geojson, { mirror: 1 });
@@ -94,37 +94,37 @@ module.exports = function(path, db) {
       expect(test).to.be.true;
     });
 
-    it('Checks that it returns an object.', function() {
+    it('Expects the method to return an object.', function() {
       expect(jmap.transform(geojson)).to.be.an('object');
     });
 
-    it('Checks that it returns an object with the property "type".', function() {
+    it('Expects it to return an object with the property "type".', function() {
       expect(jmap.transform(geojson)).to.have.property('type');
     });
 
-    it('Checks that this property "type" is "FeatureCollection".', function() {
+    it('Expects the property "type" to be equal to "FeatureCollection".', function() {
       geojson = jmap.getCollection();
       expect(jmap.transform(geojson)).to.have.property('type').to.equal('FeatureCollection');
     });
 
-    it('Checks that it this property "type" is "Feature".', function() {
+    it('Expects the property "type" to be equal to "Feature".', function() {
       geojson = jmap.getFeature(1);
       expect(jmap.transform(geojson)).to.have.property('type').to.equal('Feature');
     });
 
-    it('Checks that it returns an object for the projection "mercator".', function() {
+    it('Expects it to return an object for the projection "mercator".', function() {
       expect(jmap.transform(geojson, { projection: 'mercator' })).to.be.an('object');
     });
 
-    it('Checks that it returns an object for the mirror value "x".', function() {
+    it('Expects it to return an object for the mirror value "x".', function() {
       expect(jmap.transform(geojson, { mirror: 'x' })).to.be.an('object');
     });
 
-    it('Checks that it returns an object for the mirror value "y".', function() {
+    it('Expects it to return an object for the mirror value "y".', function() {
       expect(jmap.transform(geojson, { mirror: 'y' })).to.be.an('object');
     });
 
-    it('Checks that it returns an object for the mirror value "xy".', function() {
+    it('Expects it to return an object for the mirror value "xy".', function() {
       expect(jmap.transform(geojson, { mirror: 'xy' })).to.be.an('object');
     });
   });
@@ -136,7 +136,7 @@ module.exports = function(path, db) {
       , test
       ;
 
-    it('Checks that no arguments throws an error.', function() {
+    it('Expects the method to throw an error if the arguments are undefined.', function() {
       try {
         test = false;
         jmap.toSVG();
@@ -146,7 +146,7 @@ module.exports = function(path, db) {
       expect(test).to.be.true;
     });
 
-    it('Checks that a wrong file stream handler throws an error.', function() {
+    it('Expects the method to throw an error if the first argument is not a writable file stream handler.', function() {
       try {
         test = false;
         jmap.toSVG({}, jmap.getFeature(1));
@@ -156,7 +156,7 @@ module.exports = function(path, db) {
       expect(test).to.be.true;
     });
 
-    it('Checks that an undefined GeoJSON object throws an error.', function() {
+    it('Expects the method to throw an error if the second argument is undefined.', function() {
       try {
         test = false;
         jmap.toSVG(fd);
@@ -166,7 +166,7 @@ module.exports = function(path, db) {
       expect(test).to.be.true;
     });
 
-    it('Checks that a wrong GeoJSON object throws an error.', function() {
+    it('Expects the method to throw an error if the second argument is not a GeoJSON object.', function() {
       try {
         test = false;
         jmap.toSVG(fd, {});
@@ -176,7 +176,7 @@ module.exports = function(path, db) {
       expect(test).to.be.true;
     });
 
-    it('Checks that a GeoJSON Feature produces an output file.', function() {
+    it('Expects a GeoJSON Feature to produce an output file.', function() {
       var SVGFile = './b.svg'
         , fd = fs.createWriteStream(SVGFile, { flags: 'w' })
         ;
@@ -191,7 +191,7 @@ module.exports = function(path, db) {
       try { fs.unlinkSync(SVGFile); } finally {/* */ }
     });
 
-    it('Checks that a GeoJSON Collection produces an output file.', function() {
+    it('Expects a GeoJSON Collection to produce an output file.', function() {
       var SVGFile = './c.svg'
         , fd = fs.createWriteStream(SVGFile, { flags: 'w' })
         ;

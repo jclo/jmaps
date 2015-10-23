@@ -30,12 +30,12 @@ execSync(CMD);
 // Start tests.
 describe('jMaps', function() {
 
-  // Check if databases exist.
+  // Check if the databases exist.
   check(PATH, DBNAME_POLYGON);
   check(PATH, DBNAME_POLYLINE);
   check(PATH, DBNAME_POINT);
 
-  // Test databases.
+  // Test the databases.
   test(PATH, DBNAME_POLYGON, 'Polygon');
   test(PATH, DBNAME_POLYLINE, 'PolyLine');
   test(PATH, DBNAME_POINT, 'Point');

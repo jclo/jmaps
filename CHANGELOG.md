@@ -1,9 +1,14 @@
 ### HEAD
 
-### 0.1.x (October 16, 2015)
+### 0.1.2 (October 23, 2015)
 
-* Fixed issue with test file name 'geoTest.js' that causes a failure on Travis-CI,
-* ...,
+  * Updated the email address,
+  * Updated the test files.
+
+
+### 0.1.1 (October 16, 2015)
+
+* Fixed an issue with the test file name 'geoTest.js' that causes a failure on Travis-CI.
 
 
 ### 0.1.0 (October 16, 2015)
