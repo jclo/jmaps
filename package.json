@@ -1,6 +1,6 @@
 {
   "name": "jmaps",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A light Javascript API for reading Natural Earth DB files",
   "main": "index.js",
   "scripts": {
@@ -29,9 +29,9 @@
   "homepage": "https://github.com/jclo/jmaps",
   "devDependencies": {
     "chai": "3.4.1",
-    "coveralls": "2.11.4",
+    "coveralls": "2.11.6",
     "ghooks": "1.0.1",
-    "istanbul": "0.4.0",
+    "istanbul": "0.4.1",
     "mocha": "2.3.4",
     "opener": "1.4.1"
   },
