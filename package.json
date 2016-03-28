@@ -1,6 +1,6 @@
 {
   "name": "jmaps",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "description": "A light Javascript API for reading Natural Earth DB files",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,11 @@
     "shp",
     "geojson"
   ],
-  "author": "jclo <jclo@mobilabs.fr> (http://www.mobilabs.fr/)",
+  "author": {
+    "name": "jclo",
+    "email": "jclo@mobilabs.fr",
+    "url": "http://www.mobilabs.fr/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jclo/jmaps/issues"
@@ -29,7 +33,7 @@
   "homepage": "https://github.com/jclo/jmaps",
   "devDependencies": {
     "chai": "3.5.0",
-    "coveralls": "2.11.6",
+    "coveralls": "2.11.9",
     "ghooks": "1.0.3",
     "istanbul": "0.4.2",
     "mocha": "2.4.5",

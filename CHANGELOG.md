@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.2.0 (March 28, 2016)
+
+  * Permuted coordinates [longitude, latitude] by [latitude, longitude],
+  * Updated dependencies.
+
+
 ### 0.1.7 (January 29, 2016)
 
   * Updated copyright date,

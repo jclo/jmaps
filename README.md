@@ -31,7 +31,7 @@ var map = jmap.getFeature('feature number');
 The `GeoJSON` object looks like:
 
 ```
-{ 
+{
   bbox: [ ... ],
   type: 'FeatureCollection',
   features: [
@@ -45,7 +45,7 @@ The `GeoJSON` object looks like:
 A `Feature` looks like:
 
 ```
-{ 
+{
   type: 'Feature',
   properties: { ... },
   geometry : {
@@ -62,6 +62,7 @@ A `Natural Earth`'s database is a folder that contains, at least, two files havi
 ### Create an XML SVG file
 
 ```
+var fs = require('fs');
 var JMAPS = require('jmaps');
 
 var jmap = new JMAPS('path/to/database', 'database_name');
@@ -121,7 +122,7 @@ This methods converts the longitude and latitude coordinates of the GeoJSON obje
 This method needs the GeoJSON object as the first argument. The `options` argument is optional. If nothing is provided, the default options are:
 
 ```
-{ scale: 1, projection: none, mirror: 'none' } 
+{ scale: 1, projection: none, mirror: 'none' }
 ```
 
 `scale` can be any number from 1 to 'infinity'.
