@@ -1,5 +1,6 @@
 /* global describe, it */
-/* eslint  max-len: [1, 140, 2] */
+/* eslint  max-len: [1, 140, 2], no-unused-expressions: 0, no-new: 0, no-underscore-dangle: 0 */
+
 'use strict';
 
 // -- Node modules
@@ -14,7 +15,6 @@ var JMAPS  = require('../index.js')
 
 // -- Main
 module.exports = function(path, db, type) {
-
   describe('Test JMAPS instantiation for ' + db + '.', function() {
     it('Expects the constructor to throw an error if the path is undefined.', function() {
       var test

@@ -1,5 +1,10 @@
 ### HEAD
 
+### 0.3.1 (December 26, 2016)
+
+  * Updated the dependencies and replaced the deprecated ghooks module by Husky.
+
+
 ### 0.3.0 (Septembre 22, 2016)
 
   * Updated the module to comply with Airbnb's ESLint rules.

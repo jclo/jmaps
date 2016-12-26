@@ -1,5 +1,6 @@
 /* global describe, it */
-/* eslint  max-len: [1, 120, 2] */
+/* eslint  max-len: [1, 120, 2], no-unused-expressions: 0 */
+
 'use strict';
 
 // -- Node modules
@@ -13,7 +14,6 @@ var fs     = require('fs')
 
 // -- Main
 module.exports = function(path, db) {
-
   describe('Test Natural Earth\'s database ' + db + '.', function() {
     it('Expects the database to exist.', function() {
       var file = true;

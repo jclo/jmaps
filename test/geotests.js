@@ -1,5 +1,6 @@
 /* global describe, it */
-/* eslint  max-len: [1, 125, 2] */
+/* eslint  max-len: [1, 125, 2], no-unused-expressions: 0, no-shadow: 0 */
+
 'use strict';
 
 // -- Node modules
@@ -15,7 +16,6 @@ var JMAPS = require('../index.js')
 
 // -- Main
 module.exports = function(path, db) {
-
   describe('Test the method transform(geojson, options).', function() {
     var jmap = new JMAPS(path, db)
       , geojson
@@ -188,7 +188,7 @@ module.exports = function(path, db) {
       expect(fs.statSync(SVGFile).isFile()).to.be.true;
 
       // Delete the file.
-      try { fs.unlinkSync(SVGFile); } finally {/* */ }
+      try { fs.unlinkSync(SVGFile); } finally { /* */ }
     });
 
     it('Expects a GeoJSON Collection to produce an output file.', function() {
@@ -203,11 +203,10 @@ module.exports = function(path, db) {
       expect(fs.statSync(SVGFile).isFile()).to.be.true;
 
       // Delete the file.
-      try { fs.unlinkSync(SVGFile); } finally {/* */ }
+      try { fs.unlinkSync(SVGFile); } finally { /* */ }
     });
 
     // Delete residual file.
-    try { fs.unlinkSync(SVGFile); } finally {/* */ }
-
+    try { fs.unlinkSync(SVGFile); } finally { /* */ }
   });
 };

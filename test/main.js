@@ -1,5 +1,6 @@
 /* global describe */
 /* eslint max-len: [1, 120, 2] */
+
 'use strict';
 
 // -- Node modules
@@ -29,7 +30,6 @@ execSync(CMD);
 
 // Start tests.
 describe('jMaps', function() {
-
   // Check if the databases exist.
   check(PATH, DBNAME_POLYGON);
   check(PATH, DBNAME_POLYLINE);
@@ -42,5 +42,4 @@ describe('jMaps', function() {
 
   // Test GeoJSON object operations.
   geoTest(PATH, DBNAME_POLYGON);
-
 });
