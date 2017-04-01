@@ -1,6 +1,6 @@
 {
   "name": "jmaps",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "A light Javascript API for reading Natural Earth DB files",
   "main": "index.js",
   "scripts": {
@@ -34,13 +34,13 @@
   "homepage": "https://github.com/jclo/jmaps",
   "devDependencies": {
     "chai": "3.5.0",
-    "coveralls": "2.11.16",
-    "eslint": "3.15.0",
-    "eslint-config-airbnb-base": "11.1.0",
+    "coveralls": "2.13.0",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb-base": "11.1.2",
     "eslint-plugin-import": "2.2.0",
-    "husky": "0.13.1",
+    "husky": "0.13.3",
     "istanbul": "0.4.5",
     "mocha": "3.2.0",
-    "opener": "1.4.2"
+    "opener": "1.4.3"
   }
 }

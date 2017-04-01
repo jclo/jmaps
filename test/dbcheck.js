@@ -1,12 +1,10 @@
 /* global describe, it */
-/* eslint  max-len: [1, 120, 2], no-unused-expressions: 0 */
-
-'use strict';
+/* eslint one-var: 0, import/no-extraneous-dependencies: 0 */
 
 // -- Node modules
-var fs     = require('fs')
-  , expect = require('chai').expect
-  ;
+const fs     = require('fs')
+    , expect = require('chai').expect
+    ;
 
 // -- Local modules
 
@@ -14,23 +12,23 @@ var fs     = require('fs')
 
 // -- Main
 module.exports = function(path, db) {
-  describe('Test Natural Earth\'s database ' + db + '.', function() {
-    it('Expects the database to exist.', function() {
-      var file = true;
-      try { fs.accessSync(path + '/' + db, fs.R_OK); } catch (e) { file = false; }
-      expect(file).to.be.true;
+  describe(`Test Natural Earth's database ${db}.`, () => {
+    it('Expects the database to exist.', () => {
+      let file = true;
+      try { fs.accessSync(`${path}/${db}`, fs.R_OK); } catch (e) { file = false; }
+      expect(file).to.be.equal(true);
     });
 
-    it('Expects the database file with the suffix .dbf to exist.', function() {
-      var file = true;
-      try { fs.accessSync(path + '/' + db + '/' + db + '.dbf', fs.R_OK); } catch (e) { file = false; }
-      expect(file).to.be.true;
+    it('Expects the database file with the suffix .dbf to exist.', () => {
+      let file = true;
+      try { fs.accessSync(`${path}/${db}/${db}.dbf`, fs.R_OK); } catch (e) { file = false; }
+      expect(file).to.be.equal(true);
     });
 
-    it('Expects the database file with the suffix .shp to exist.', function() {
-      var file = true;
-      try { fs.accessSync(path + '/' + db + '/' + db + '.dbf', fs.R_OK); } catch (e) { file = false; }
-      expect(file).to.be.true;
+    it('Expects the database file with the suffix .shp to exist.', () => {
+      let file = true;
+      try { fs.accessSync(`${path}/${db}/${db}.shp`, fs.R_OK); } catch (e) { file = false; }
+      expect(file).to.be.equal(true);
     });
   });
 };

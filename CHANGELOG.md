@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.3.x (April 1, 2017)
+
+  * Updated the library to comply with ES6 syntax,
+  * ...,
+
+
 ### 0.3.2 (February 14, 2017)
 
   * Updated the dependencies,
@@ -11,7 +17,7 @@
   * Updated the dependencies and replaced the deprecated ghooks module by Husky.
 
 
-### 0.3.0 (Septembre 22, 2016)
+### 0.3.0 (September 22, 2016)
 
   * Updated the module to comply with Airbnb's ESLint rules.
 

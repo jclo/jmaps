@@ -1,8 +1,24 @@
 {
-  "extends": "airbnb-base/legacy",
+  /**
+   * Disable the module option as we use node modules:
+   */
+  "parserOptions": {
+    "sourceType": "module",
+  },
+  /**
+   * Set Environnement
+   */
+  // Done by airbnb
+  /**
+   * Set globals
+   */
+  // Done by airbnb
+  /**
+   * Set rules
+   */
+  "extends": "airbnb-base",
   // Overwritten airbnb's rules:
   "rules": {
-    one-var: 0,
     func-names: ["error", "never"],
     space-before-function-paren: ["error", "never"],
     no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }],
