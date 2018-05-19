@@ -1,9 +1,9 @@
 /* global describe, it */
-/* eslint one-var: 0, import/no-extraneous-dependencies: 0 */
+/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
 
 // -- Node modules
-const fs     = require('fs')
-    , expect = require('chai').expect
+const fs         = require('fs')
+    , { expect } = require('chai')
     ;
 
 // -- Local modules

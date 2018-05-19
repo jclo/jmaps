@@ -1,9 +1,9 @@
 /* global describe */
 /* eslint one-var: 0 */
-/* eslint max-len: [1, 120, 2] */
+/* eslint max-len: [1, 120, 2], semi-style: 0 */
 
 // -- Node modules
-const execSync = require('child_process').execSync
+const { execSync } = require('child_process')
     ;
 
 // -- Local modules

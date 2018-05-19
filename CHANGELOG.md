@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.4.1 (May 19, 2018)
+
+  * Updated the dependencies,
+  * ...,
+
+
 ### 0.4.0 (April 1, 2017)
 
   * Updated the library to comply with ES6 syntax,

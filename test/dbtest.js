@@ -1,8 +1,9 @@
 /* global describe, it */
-/* eslint one-var: 0, import/no-extraneous-dependencies: 0, no-new: 0, no-underscore-dangle: 0 */
+/* eslint one-var: 0, import/no-extraneous-dependencies: 0, no-new: 0, no-underscore-dangle: 0,
+  semi-style: 0 */
 
 // -- Node modules
-const expect = require('chai').expect
+const { expect } = require('chai')
     ;
 
 // -- Local modules
@@ -108,8 +109,8 @@ module.exports = function(path, db, type) {
 
     describe('Test the method getFeature().', () => {
       const jmap = new JMAPS(path, db)
-        , record = jmap.getFeature(1)
-        ;
+          , record = jmap.getFeature(1)
+          ;
       let test
         ;
 

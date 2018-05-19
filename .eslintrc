@@ -19,10 +19,12 @@
   "extends": "airbnb-base",
   // Overwritten airbnb's rules:
   "rules": {
+    strict: ["error", "global"],
     func-names: ["error", "never"],
     space-before-function-paren: ["error", "never"],
-    no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }],
+    no-plusplus: ["error", { "allowForLoopAfterthoughts": true }],
+    no-multi-spaces: [2, { exceptions: { "VariableDeclarator": true } }],
     comma-style: ["error", "first", { "exceptions": { "ArrayExpression": true, "ObjectExpression": true } }],
-    no-plusplus: ["error", { "allowForLoopAfterthoughts": true }]
+    indent: ["error", 2, { "VariableDeclarator": { "const": 2 }, "SwitchCase": 1 }]
   }
 }
