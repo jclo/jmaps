@@ -3,7 +3,7 @@
 ### 0.4.1 (May 19, 2018)
 
   * Updated the dependencies,
-  * ...,
+  * Release.
 
 
 ### 0.4.0 (April 1, 2017)
