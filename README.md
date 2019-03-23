@@ -161,6 +161,6 @@ This method requires two arguments. `fd`, a file write stream handler, and a `Ge
 [download-url]: https://www.npmjs.com/package/jmaps
 [travis-url]: https://travis-ci.org/jclo/jmaps
 [coveralls-url]: https://coveralls.io/github/jclo/jmaps?branch=master
-[dependencies-url]: https://david-dm.org/jclo/jmaps#info=dependencies
-[devdependencies-url]: https://david-dm.org/jclo/jmaps#info=devDependencies
+[dependencies-url]: https://david-dm.org/jclo/jmaps
+[devdependencies-url]: https://david-dm.org/jclo/jmaps?type=dev
 [license-url]: http://opensource.org/licenses/MIT
