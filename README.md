@@ -1,13 +1,12 @@
 # jMaps
 
 [![NPM version][npm-image]][npm-url]
+[![GitHub last commit][commit-image]][commit-url]
 [![Travis CI][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![Dependencies status][dependencies-image]][dependencies-url]
 [![Dev Dependencies status][devdependencies-image]][devdependencies-url]
 [![License][license-image]](LICENSE.md)
-
-[![NPM install][npm-install-image]][npm-install-url]
 
 jMaps is a light Javascript API for reading [Natural Earth](http://www.naturalearthdata.com)'s DB files. jMaps provides methods to extract data from the database and creates GeoJSON and XML SVG outputs.
 
@@ -18,14 +17,19 @@ jMaps is a light Javascript API for reading [Natural Earth](http://www.naturalea
 ```
 var JMAPS = require('jmaps');
 
-// Create an object
-var jmap = new JMAPS('path/to/database', 'database_name');
+// Create the object
+var jmap = JMAPS();
+
+// Load the Natural Earth database:
+await jmap.load('<path>/ne_110m_admin_0_countries')
 
 // Get a collection of maps (FeatureCollection)
 var maps = jmap.getCollection();
 
 // Get a map (Feature)
 var map = jmap.getFeature('feature number');
+
+
 ```
 
 The `GeoJSON` object looks like:
@@ -146,21 +150,21 @@ This method requires two arguments. `fd`, a file write stream handler, and a `Ge
 <!--- URls -->
 
 [npm-image]: https://img.shields.io/npm/v/jmaps.svg?style=flat-square
-[npm-install-image]: https://nodei.co/npm/jmaps.png?compact=true
-[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/jmaps.svg?style=flat-square
+[release-image]: https://img.shields.io/github/release/jclo/jmaps.svg?include_prereleases&style=flat-square
+[commit-image]: https://img.shields.io/github/last-commit/jclo/jmaps.svg?style=flat-square
 [travis-image]: https://img.shields.io/travis/jclo/jmaps.svg?style=flat-square
 [coveralls-image]: https://img.shields.io/coveralls/jclo/jmaps/master.svg?style=flat-square
 [dependencies-image]: https://david-dm.org/jclo/jmaps/status.svg?theme=shields.io
 [devdependencies-image]: https://david-dm.org/jclo/jmaps/dev-status.svg?theme=shields.io
+[npm-bundle-size-image]: https://img.shields.io/bundlephobia/minzip/jmaps.svg?style=flat-square
 [license-image]: https://img.shields.io/npm/l/jmaps.svg?style=flat-square
 
 [npm-url]: https://www.npmjs.com/package/jmaps
-[npm-install-url]: https://nodei.co/npm/jmaps
-[node-url]: http://nodejs.org/download
-[download-url]: https://www.npmjs.com/package/jmaps
+[release-url]: https://github.com/jclo/jmaps/tags
+[commit-url]: https://github.com/jclo/jmaps/commits/master
 [travis-url]: https://travis-ci.org/jclo/jmaps
 [coveralls-url]: https://coveralls.io/github/jclo/jmaps?branch=master
 [dependencies-url]: https://david-dm.org/jclo/jmaps
 [devdependencies-url]: https://david-dm.org/jclo/jmaps?type=dev
 [license-url]: http://opensource.org/licenses/MIT
+[npm-bundle-size-url]: https://img.shields.io/bundlephobia/minzip/jmaps

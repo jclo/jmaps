@@ -1,118 +1,52 @@
+// ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, import/no-extraneous-dependencies: 0, no-new: 0, no-underscore-dangle: 0,
-  semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
-// -- Node modules
+'use strict';
+
+// -- Vendor Modules
 const { expect } = require('chai')
     ;
 
-// -- Local modules
-const JMAPS  = require('../index.js')
-    ;
 
-// -- Local constants
+// -- Local Modules
+
+
+// -- Local Constants
+
+
+// -- Local Variables
+
 
 // -- Main
-module.exports = function(path, db, type) {
-  describe(`Test JMAPS instantiation for ${db}.`, () => {
-    it('Expects the constructor to throw an error if the path is undefined.', () => {
-      let test
-        ;
+module.exports = function(jMaps, path, db, type) {
+  describe('Test jMaps Constructor:', () => {
+    const jmap = jMaps();
 
-      try {
-        test = false;
-        new JMAPS();
-      } catch (e) {
-        test = true;
-      }
-      expect(test).to.be.equal(true);
+    it('Expects the constructor to return an object.', () => {
+      expect(jmap).to.be.an('object');
     });
 
-    it('Expects it to throw an error if the db name is undefined.', () => {
-      let test
-        ;
+    describe('Test the method load():', () => {
+      it('Expects load to throw an error if the path is not valid.', () => {
+        let result;
 
-      try {
-        test = false;
-        new JMAPS(path);
-      } catch (e) {
-        test = true;
-      }
-      expect(test).to.be.equal(true);
-    });
-
-    it('Expects it to throw an error for a wrong PATH.', () => {
-      let test
-        ;
-
-      try {
-        test = false;
-        new JMAPS(`${path}s`, db);
-      } catch (e) {
-        test = true;
-      }
-      expect(test).to.be.equal(true);
-    });
-
-    it('Expects it to throw an error for a wrong DBNAME.', () => {
-      let test
-        ;
-
-      try {
-        test = false;
-        new JMAPS(path, `${db}s`);
-      } catch (e) {
-        test = true;
-      }
-      expect(test).to.be.equal(true);
-    });
-
-    it('Expects it to return an object.', () => {
-      expect(new JMAPS(path, db)).to.be.an('object');
-    });
-
-    describe('Test JMAPS attached object _dbf.', () => {
-      const jmap = new JMAPS(path, db);
-
-      it('Expects the JMAPS object to have ._dbf object attached.', () => {
-        expect(jmap._dbf).to.be.an('object');
-      });
-
-      it('Expects the JMAPS object to have ._dbf object with the property db.', () => {
-        expect(jmap._dbf).to.have.property('db');
-      });
-
-      it('Expects JMAPS object to have ._dbf object with the property header.', () => {
-        expect(jmap._dbf).to.have.property('header');
-      });
-
-      it('Expects JMAPS object to have ._dbf object with property fieldDescriptorArray.', () => {
-        expect(jmap._dbf).to.have.property('fieldDescriptorArray');
+        try {
+          result = false;
+          jmap.load();
+        } catch (e) {
+          result = true;
+        }
+        expect(result).to.be.equal(true);
       });
     });
 
-    describe('Test JMAPS attached object _shp.', () => {
-      const jmap = new JMAPS(path, db);
+    describe('Test the method getFeature():', () => {
+      const jm = jMaps();
+      let test;
 
-      it('Expects JMAPS object to have ._shp object attached.', () => {
-        expect(jmap._shp).to.be.an('object');
-      });
-
-      it('Expects JMAPS object to have ._shp object with the property db.', () => {
-        expect(jmap._shp).to.have.property('db');
-      });
-
-      it('Expects JMAPS object to have ._shp object with property header.', () => {
-        expect(jmap._shp).to.have.property('header');
-      });
-    });
-
-    describe('Test the method getFeature().', () => {
-      const jmap = new JMAPS(path, db)
-          , record = jmap.getFeature(1)
-          ;
-      let test
-        ;
+      jm.load(path, db);
+      const record = jm.getFeature(1);
 
       it('Expects the method to return an object.', () => {
         expect(record).to.be.an('object');
@@ -141,7 +75,7 @@ module.exports = function(path, db, type) {
       it('Expects a negative record number to throw an error.', () => {
         try {
           test = false;
-          jmap.getFeature(-1);
+          jm.getFeature(-1);
         } catch (e) {
           test = true;
         }
@@ -151,7 +85,7 @@ module.exports = function(path, db, type) {
       it('Expects a non integer record number to throw an error.', () => {
         try {
           test = false;
-          jmap.getFeature(1.1);
+          jm.getFeature(1.1);
         } catch (e) {
           test = true;
         }
@@ -161,17 +95,7 @@ module.exports = function(path, db, type) {
       it('Expects a string record number to throw an error.', () => {
         try {
           test = false;
-          jmap.getFeature('1');
-        } catch (e) {
-          test = true;
-        }
-        expect(test).to.be.equal(true);
-      });
-
-      it('Expects an out of range record number to throw an error.', () => {
-        try {
-          test = false;
-          jmap.getFeature(jmap._dbf.header.numberOfRecords + 1);
+          jm.getFeature('1');
         } catch (e) {
           test = true;
         }
@@ -179,10 +103,11 @@ module.exports = function(path, db, type) {
       });
     });
 
-    describe('Test the method getCollection().', () => {
-      const jmap    = new JMAPS(path, db)
-          , records = jmap.getCollection()
-          ;
+    describe('Test the method getCollection():', () => {
+      const jm = jMaps();
+
+      jm.load(path, db);
+      const records = jm.getCollection();
 
       it('Expects the method to return an object.', () => {
         expect(records).to.be.an('object');

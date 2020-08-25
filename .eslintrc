@@ -1,18 +1,21 @@
 {
   /**
-   * Disable the module option as we use node modules:
+   * Set JavaScript language options
    */
   "parserOptions": {
-    "sourceType": "module",
+    "sourceType": "script",
   },
   /**
    * Set Environnement
    */
-  // Done by airbnb
+  "env": {
+    "browser": true
+  },
   /**
    * Set globals
    */
-  // Done by airbnb
+  "globals": {
+  },
   /**
    * Set rules
    */
@@ -23,8 +26,9 @@
     func-names: ["error", "never"],
     space-before-function-paren: ["error", "never"],
     no-plusplus: ["error", { "allowForLoopAfterthoughts": true }],
-    no-multi-spaces: [2, { exceptions: { "VariableDeclarator": true } }],
+    "no-multi-spaces": [2, { exceptions: { "VariableDeclarator": true } }],
     comma-style: ["error", "first", { "exceptions": { "ArrayExpression": true, "ObjectExpression": true } }],
-    indent: ["error", 2, { "VariableDeclarator": { "const": 2 }, "SwitchCase": 1 }]
+    indent: ["error", 2, { "VariableDeclarator": { "const": 2 }, "SwitchCase": 1 }],
+    no-multiple-empty-lines: ["error", { "max": 2, "maxEOF": 0 }]
   }
 }

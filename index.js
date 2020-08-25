@@ -1,1 +1,3 @@
-module.exports = require('./lib/jmaps');
+'use strict';
+
+module.exports = require('./src/jmaps');

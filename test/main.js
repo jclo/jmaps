@@ -1,19 +1,27 @@
+// ESLint declarations:
 /* global describe */
-/* eslint one-var: 0 */
-/* eslint max-len: [1, 120, 2], semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0 */
 
-// -- Node modules
+'use strict';
+
+// -- Vendor Modules
 const { execSync } = require('child_process')
     ;
 
-// -- Local modules
-const check   = require('./dbcheck.js')
-    , test    = require('./dbtest.js')
-    , geoTest = require('./geotests.js')
+
+// -- Local Modules
+const jMaps  = require('../index.js')
+    , pack    = require('../package.json')
+    , testlib = require('./int/lib')
+    , check   = require('./int/dbcheck.js')
+    , test    = require('./int/dbtest.js')
+    , geoTest = require('./int/geotests.js')
     ;
 
-// -- Local constants
-const SCRIPT          = './test/natural_earth_download.sh'
+
+// -- Local Constants
+const libname = 'jMaps'
+    , SCRIPT          = './test/natural_earth_download.sh'
     , URL             = 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural'
     , PATH            = './_db'
     , DBNAME_POLYGON  = 'ne_50m_admin_0_countries'
@@ -21,24 +29,30 @@ const SCRIPT          = './test/natural_earth_download.sh'
     , DBNAME_POINT    = 'ne_50m_populated_places'
     ;
 
+
+// -- Local Variables
+
+
+// -- Main
 // Download Natural Earth's databases if they are not present. This is required
 // for Travis CI as we do not provide Natural Earth's databases with the
 // package.
 const cmd = `${SCRIPT} ${URL} ${PATH} ${DBNAME_POLYGON} ${DBNAME_POLYLINE} ${DBNAME_POINT}`;
 execSync(cmd);
 
-// Start tests.
-describe('jMaps', () => {
+describe('Test jMaps:', () => {
+  testlib(jMaps, libname, pack.version);
+
   // Check if the databases exist.
   check(PATH, DBNAME_POLYGON);
   check(PATH, DBNAME_POLYLINE);
   check(PATH, DBNAME_POINT);
 
   // Test the databases.
-  test(PATH, DBNAME_POLYGON, 'Polygon');
-  test(PATH, DBNAME_POLYLINE, 'PolyLine');
-  test(PATH, DBNAME_POINT, 'Point');
+  test(jMaps, PATH, DBNAME_POLYGON, 'Polygon');
+  test(jMaps, PATH, DBNAME_POLYLINE, 'PolyLine');
+  test(jMaps, PATH, DBNAME_POINT, 'Point');
 
   // Test GeoJSON object operations.
-  geoTest(PATH, DBNAME_POLYGON);
+  geoTest(jMaps, PATH, DBNAME_POLYGON);
 });
