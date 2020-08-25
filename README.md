@@ -15,21 +15,19 @@ jMaps is a light Javascript API for reading [Natural Earth](http://www.naturalea
 ### Extract data and create a GeoJSON object
 
 ```
-var JMAPS = require('jmaps');
+var jMaps = require('jmaps');
 
 // Create the object
-var jmap = JMAPS();
+const jmap = jMaps();
 
 // Load the Natural Earth database:
-await jmap.load('<path>/ne_110m_admin_0_countries')
+jmap.load('<path>, <ne_110m_admin_0_countries>')
 
 // Get a collection of maps (FeatureCollection)
-var maps = jmap.getCollection();
+const maps = jmap.getCollection();
 
 // Get a map (Feature)
-var map = jmap.getFeature('feature number');
-
-
+const map = jmap.getFeature('feature number');
 ```
 
 The `GeoJSON` object looks like:
@@ -66,21 +64,20 @@ A `Natural Earth`'s database is a folder that contains, at least, two files havi
 ### Create an XML SVG file
 
 ```
-var fs = require('fs');
-var JMAPS = require('jmaps');
+const fs = require('fs');
+const jMaps = require('jmaps');
 
-var jmap = new JMAPS('path/to/database', 'database_name');
-var collection = jmap.getCollection();
-var feature = jmap.getFeature('feature number');
+const jmap = jMaps();
+jmap.load('<path>, <ne_110m_admin_0_countries>')
 
-// Transform longitudes and latitudes to x, y plane coordinates
-var map = jmap.transform(feature, {scale: 1, projection: 'mercator', mirror: 'x'});
+// Transform the longitudes and latitudes, from a collection, to x, y plane coordinates
+const map = jmap.transform({scale: 1, projection: 'mercator', mirror: 'x'});
 
 // Create a File stream
-var fd = fs.createWriteStream('path/to/svg/file', {flags: 'w'});
+const fd = fs.createWriteStream('path/to/svg/file', {flags: 'w'});
 
 // Fill the write stream
-jmap.toSVG(fd, map);
+jmap.toSVG(map, fs);
 ```
 
 It creates an XML file that looks like:
@@ -93,7 +90,7 @@ It creates an XML file that looks like:
 </svg>
 ```
 
-A `Feature` produces an XML SVG file with one `path` while a `FeatureCollection` produces an XML SVG file with a multitude of `path`.
+A `Feature` produces an XML SVG file with one `path` while a `FeatureCollection` produces an XML SVG file with a multitude of `paths`.
 
 You can enrich your XML files with information extracted from the property `properties` of a `Feature` object.
 
@@ -103,8 +100,8 @@ This module implements four methods:
 
  * getFeature(`feature number`),
  * getCollection(),
- * transform(`GeoJSON object`, `options`),
- * toSVG(`write file stream`, `Transformed GeoJSON object`).
+ * transform(`options`),
+ * toSVG(`GeoJSON object`, `write file stream`).
 
 
 ### getFeature(n)
@@ -119,11 +116,13 @@ This method requires one argument. Its is a `number` - the Feature number. It st
 This method extracts a `FeatureCollection` from `Natural Earth`'s database and returns a Javascript GeoJSON object. A `FeatureCollection` is a set of `Feature`.
 
 
-### transform(GeoJSON, options)
+### transform(options)
 
 This methods converts the longitude and latitude coordinates of the GeoJSON object to x, y plane coordinates. It returns the transformed Javascript GeoJSON object.
 
-This method needs the GeoJSON object as the first argument. The `options` argument is optional. If nothing is provided, the default options are:
+This methods extracts a collection from the loaded database, converts it and returns the converted GeoJSON object.
+
+The `options` argument is optional. If nothing is provided, the default options are:
 
 ```
 { scale: 1, projection: none, mirror: 'none' }
@@ -136,11 +135,11 @@ This method needs the GeoJSON object as the first argument. The `options` argume
 `mirror` can be `none`, `x`, `y`, `xy`.
 
 
-### toSVG(fd, GeoJSON)
+### toSVG(GeoJSON, fd)
 
-This method generates XML SVG data from the transformed GeoJSON object.
+This method generates XML SVG data from a collection or a transformed collection.
 
-This method requires two arguments. `fd`, a file write stream handler, and a `GeoJSON` object with x, y plane coordinates.
+This method requires two arguments. A `GeoJSON` object (collection) and `fd`, a file write stream handler.
 
 
 ## License

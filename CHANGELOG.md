@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.5.1 (August 25, 2020)
+
+  * Updated the README,
+  * ...
+
+
 ### 0.5.0 (August 25, 2020)
 
   * Reshuffled the library around the module @mobilabs/shp,
