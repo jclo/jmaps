@@ -90,34 +90,32 @@ module.exports = function(jMaps, path, db) {
       expect(test).to.be.equal(true);
     });
 
-    it('Expects a GeoJSON Feature to produce an output file.', () => {
+    it('Expects a GeoJSON Feature to produce an output file.', (done) => {
       const sFile = './b.svg'
           , wfd = fs.createWriteStream(sFile, { flags: 'w' })
           ;
 
-      // Create SVG output.
+      // Create SVG output:
       jmap.toSVG(jmap.getFeature(1), wfd);
-
-      // Check that it creates a file.
-      expect(fs.statSync(sFile).isFile()).to.be.equal(true);
-
-      // Delete the file.
-      try { fs.unlinkSync(sFile); } finally { /* */ }
+      setTimeout(() => {
+        expect(fs.statSync(sFile).isFile()).to.be.equal(true);
+        try { fs.unlinkSync(sFile); } finally { /* */ }
+        done();
+      }, 1000);
     });
 
-    it('Expects a GeoJSON Collection to produce an output file.', () => {
+    it('Expects a GeoJSON Collection to produce an output file.', (done) => {
       const sFile = './c.svg'
           , wfd = fs.createWriteStream(sFile, { flags: 'w' })
           ;
 
-      // Create SVG output.
+      // Create SVG output:
       jmap.toSVG(jmap.getCollection(), wfd);
-
-      // Check that it creates a file.
-      expect(fs.statSync(sFile).isFile()).to.be.equal(true);
-
-      // Delete the file.
-      try { fs.unlinkSync(sFile); } finally { /* */ }
+      setTimeout(() => {
+        expect(fs.statSync(sFile).isFile()).to.be.equal(true);
+        try { fs.unlinkSync(sFile); } finally { /* */ }
+        done();
+      });
     });
   });
 };

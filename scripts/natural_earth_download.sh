@@ -5,7 +5,7 @@
 #
 # The MIT License (MIT)
 #
-# Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr)
+# Copyright (c) 2024 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -25,9 +25,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-URL=$1
-DIRECTORY=$2
-declare -a DBNAME=($3 $4 $5)
+URL="https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural"
+DIRECTORY="./_db"
+declare -a DBNAME=("ne_50m_admin_0_countries" "ne_50m_admin_0_pacific_groupings" "ne_50m_populated_places")
 
 # Check if database dir exists. Otherwise, create it.
 if [ ! -d "${DIRECTORY}" ]; then
@@ -41,10 +41,13 @@ do
   # Check if the 'DB' exists. Otherwise download it.
   if [ ! -d "${DIRECTORY}/${DBNAME}" ]; then
     mkdir ${DIRECTORY}/${DBNAME}
-    echo "${DBNAME} does not exist. Downloading it ..."
+    echo "${DBNAME} does not exist. Downloading it from ${URL} ..."
+    echo ${URL}/${DBNAME}.zip
     curl -L --get ${URL}/${DBNAME}.zip -o ${DIRECTORY}/${DBNAME}/${DBNAME}.zip
     unzip ${DIRECTORY}/${DBNAME}/${DBNAME}.zip -d ${DIRECTORY}/${DBNAME}
     rm ${DIRECTORY}/${DBNAME}/${DBNAME}.zip
   fi
 done
 exit 0
+
+# -- oOo --

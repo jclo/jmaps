@@ -5,24 +5,20 @@
 'use strict';
 
 // -- Vendor Modules
-const { execSync } = require('child_process')
-    ;
 
 
 // -- Local Modules
-const jMaps  = require('../index.js')
+const jMaps   = require('../index')
     , pack    = require('../package.json')
     , testlib = require('./int/lib')
-    , check   = require('./int/dbcheck.js')
-    , test    = require('./int/dbtest.js')
-    , geoTest = require('./int/geotests.js')
+    , check   = require('./int/dbcheck')
+    , test    = require('./int/dbtest')
+    , geoTest = require('./int/geotests')
     ;
 
 
 // -- Local Constants
-const libname = 'jMaps'
-    , SCRIPT          = './test/natural_earth_download.sh'
-    , URL             = 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural'
+const libname         = 'jMaps'
     , PATH            = './_db'
     , DBNAME_POLYGON  = 'ne_50m_admin_0_countries'
     , DBNAME_POLYLINE = 'ne_50m_admin_0_pacific_groupings'
@@ -34,14 +30,8 @@ const libname = 'jMaps'
 
 
 // -- Main
-// Download Natural Earth's databases if they are not present. This is required
-// for Travis CI as we do not provide Natural Earth's databases with the
-// package.
-const cmd = `${SCRIPT} ${URL} ${PATH} ${DBNAME_POLYGON} ${DBNAME_POLYLINE} ${DBNAME_POINT}`;
-execSync(cmd);
-
 describe('Test jMaps:', () => {
-  testlib(jMaps, libname, pack.version);
+  testlib(jMaps, libname, pack.version, 'without new');
 
   // Check if the databases exist.
   check(PATH, DBNAME_POLYGON);

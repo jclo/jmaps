@@ -5,13 +5,30 @@
   "main": "index.js",
   "bin": {},
   "scripts": {
-    "dev": "gulp rundev",
-    "app": "gulp runapp",
-    "test": "cross-env NODE_ENV=test nyc --reporter=lcov mocha ./test/main.js",
-    "check-coverage": "nyc check-coverage --statements 85 --branches 75 --functions 90 --lines 85",
-    "display-coverage": "opener ./coverage/lcov-report/index.html",
-    "report-coverage": "nyc report --reporter=text-lcov | coveralls",
-    "report": "nyc report"
+    "general": " --- GENERAL ---",
+    "build:js": " --- JAVASCRIPT --- ",
+    "build:css": " --- CSS --- ",
+    "build:generic": " --- BUILD (GENERIC) --- ",
+    "build:development": " --- BUILD (DEVELOPMENT) --- ",
+    "build:production": " --- BUILD (PRODUCTION) --- ",
+
+    "testing": " --- TESTING --- ",
+    "pretest": "sh ./scripts/natural_earth_download.sh",
+    "test": "cross-env NODE_ENV=test c8 --reporter=lcov mocha ./test/main.js",
+    "display:coverage": "open -a safari ./coverage/lcov-report/index.html",
+    "check:coverage": "c8 check-coverage --statements 90 --branches 80 --functions 90 --lines 90",
+    "report": "c8 report",
+
+    "serving": " --- SERVING --- ",
+    "server:dev": "http-server --port 8080",
+    "server:prod": "http-server --port 8090",
+
+    "watch:js:css": " --- WATCHING --- ",
+    "deployment": " --- DEPLOYMENT --- ",
+
+    "others": " --- OTHERS ---",
+    "prepare": "husky install",
+    "doc": ""
   },
   "repository": {
     "type": "git",
@@ -36,31 +53,32 @@
   },
   "homepage": "https://github.com/jclo/jmaps",
   "dependencies": {
-    "@mobilabs/shp": "0.0.7"
+    "@mobilabs/shp": "^1.0.2"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "coveralls": "^3.1.0",
-    "cross-env": "^7.0.2",
-    "del": "^5.1.0",
-    "eslint": "^7.7.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "gulp": "^4.0.2",
-    "gulp-connect": "^5.7.0",
-    "husky": "^4.2.5",
-    "mocha": "^8.1.1",
-    "nyc": "^15.1.0",
-    "open": "^7.2.0",
-    "opener": "^1.5.1"
+    "@mobilabs/es6lib": "2.2.0",
+    "c8": "^9.0.0",
+    "chai": "^4.4.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "http-server": "^14.1.1",
+    "husky": "^8.0.3",
+    "mocha": "^10.2.0",
+    "nodemon": "^3.0.2",
+    "terser": "^5.26.0"
+  },
+  "c8": {
+    "include": [
+      "index.js",
+      "src/**/*.js"
+    ],
+    "exclude": [],
+    "all": false
   },
   "publishConfig": {
     "access": "public"
   },
-  "private": false,
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run test && npm run check-coverage && npm run report"
-    }
-  }
+  "private": false
 }
