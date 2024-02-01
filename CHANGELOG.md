@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.5.3 (February 1, 2024)
+
+  * Fixed an issue in .npmignore file,
+  * ...,
+
+
 ### 0.5.2 (February 1, 2024)
 
   * Updated the project with the boilerplate ES6lib v2.2 (no Gulp, Github actions),
