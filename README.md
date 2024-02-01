@@ -2,10 +2,8 @@
 
 [![NPM version][npm-image]][npm-url]
 [![GitHub last commit][commit-image]][commit-url]
-[![Travis CI][travis-image]][travis-url]
+[![Github workflow][ci-image]][ci-url]
 [![Test coverage][coveralls-image]][coveralls-url]
-[![Dependencies status][dependencies-image]][dependencies-url]
-[![Dev Dependencies status][devdependencies-image]][devdependencies-url]
 [![License][license-image]](LICENSE.md)
 
 jMaps is a light Javascript API for reading [Natural Earth](http://www.naturalearthdata.com)'s DB files. jMaps provides methods to extract data from the database and creates GeoJSON and XML SVG outputs.
@@ -151,19 +149,15 @@ This method requires two arguments. A `GeoJSON` object (collection) and `fd`, a 
 [npm-image]: https://img.shields.io/npm/v/jmaps.svg?style=flat-square
 [release-image]: https://img.shields.io/github/release/jclo/jmaps.svg?include_prereleases&style=flat-square
 [commit-image]: https://img.shields.io/github/last-commit/jclo/jmaps.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/jclo/jmaps.svg?style=flat-square
+[ci-image]: https://github.com/jclo/jmaps/actions/workflows/ci.yml/badge.svg
 [coveralls-image]: https://img.shields.io/coveralls/jclo/jmaps/master.svg?style=flat-square
-[dependencies-image]: https://david-dm.org/jclo/jmaps/status.svg?theme=shields.io
-[devdependencies-image]: https://david-dm.org/jclo/jmaps/dev-status.svg?theme=shields.io
 [npm-bundle-size-image]: https://img.shields.io/bundlephobia/minzip/jmaps.svg?style=flat-square
 [license-image]: https://img.shields.io/npm/l/jmaps.svg?style=flat-square
 
 [npm-url]: https://www.npmjs.com/package/jmaps
 [release-url]: https://github.com/jclo/jmaps/tags
 [commit-url]: https://github.com/jclo/jmaps/commits/master
-[travis-url]: https://travis-ci.org/jclo/jmaps
+[ci-url]: https://github.com/jclo/jmaps/actions/workflows/ci.yml
 [coveralls-url]: https://coveralls.io/github/jclo/jmaps?branch=master
-[dependencies-url]: https://david-dm.org/jclo/jmaps
-[devdependencies-url]: https://david-dm.org/jclo/jmaps?type=dev
-[license-url]: http://opensource.org/licenses/MIT
 [npm-bundle-size-url]: https://img.shields.io/bundlephobia/minzip/jmaps
+[license-url]: http://opensource.org/licenses/MIT

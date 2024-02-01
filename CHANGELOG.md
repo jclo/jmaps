@@ -4,6 +4,7 @@
 
   * Updated the project with the boilerplate ES6lib v2.2 (no Gulp, Github actions),
   * Modified how array is declared in bash script as Linux behaves differently of MacOS,
+  * Modified the bash script and how it is called to run on Github Actions,
   * ...,
 
 
