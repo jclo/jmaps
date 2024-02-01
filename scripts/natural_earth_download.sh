@@ -27,7 +27,7 @@
 
 URL="https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural"
 DIRECTORY="./_db"
-declare -a DBNAME=("ne_50m_admin_0_countries" "ne_50m_admin_0_pacific_groupings" "ne_50m_populated_places")
+DBNAME=("ne_50m_admin_0_countries" "ne_50m_admin_0_pacific_groupings" "ne_50m_populated_places")
 
 # Check if database dir exists. Otherwise, create it.
 if [ ! -d "${DIRECTORY}" ]; then
@@ -46,6 +46,8 @@ do
     curl -L --get ${URL}/${DBNAME}.zip -o ${DIRECTORY}/${DBNAME}/${DBNAME}.zip
     unzip ${DIRECTORY}/${DBNAME}/${DBNAME}.zip -d ${DIRECTORY}/${DBNAME}
     rm ${DIRECTORY}/${DBNAME}/${DBNAME}.zip
+  else
+    echo "${DBNAME} already available in ./_db"
   fi
 done
 exit 0
