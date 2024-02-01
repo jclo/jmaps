@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # This script downloads Natural Earth's databases if they aren't available on
 # the server. This is required for Travis CI.
@@ -27,8 +27,7 @@
 
 URL="https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural"
 DIRECTORY="./_db"
-
-DBNAME=("ne_50m_admin_0_countries" "ne_50m_admin_0_pacific_groupings" "ne_50m_populated_places")
+declare -a DBNAME=("ne_50m_admin_0_countries" "ne_50m_admin_0_pacific_groupings" "ne_50m_populated_places")
 
 # Check if database dir exists. Otherwise, create it.
 if [ ! -d "${DIRECTORY}" ]; then
