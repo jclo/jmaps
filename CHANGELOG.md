@@ -3,7 +3,7 @@
 ### 0.5.3 (February 1, 2024)
 
   * Fixed an issue in .npmignore file,
-  * ...,
+  * Release.
 
 
 ### 0.5.2 (February 1, 2024)
